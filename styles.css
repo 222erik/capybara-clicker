@@ -43,30 +43,34 @@ body {
 #shop-container {
     display: flex;
     flex-direction: column;
-    background-color: gray;
+    background-color: #AA99BB;
     border: black solid 2px;
     border-radius: 20px;
     width: fit-content;
     height: fit-content;
     gap: 10px;
+    padding: 15px 15px;
+    margin-right: 10px;
+    margin-top: 10px;
 }
 
 #shop-title {
     font-size: 50px;
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 0;
+    margin-top: 5px;
 }
 
 .shop-item {
-    width: 500px;
-    background-color: gray;
+    width: 400px;
+    background-color: #AACCBB;
     border: black 2px solid;
     border-radius: 10px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin: 0 15px;
+    padding: 4px 7px;
+    gap: 15px;
 }
 
 .shop-item img {
@@ -76,4 +80,9 @@ body {
 
 .shop-item p {
     font-size: 30px;
+    margin: 0;
+}
+
+.shop-item:hover {
+    cursor: pointer;
 }
