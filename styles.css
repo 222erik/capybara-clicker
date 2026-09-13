@@ -3,6 +3,11 @@ body {
     background: radial-gradient(circle, #FFDDDD, #77BBFF);
 }
 
+#big-container {
+    display: flex;
+    justify-content: space-between;
+}
+
 #capy-column {
     display: flex;
     flex-direction: column;
@@ -30,6 +35,45 @@ body {
 
 #cps-indicator {
     font-size: 30px;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-left: 10px;
+    margin-bottom: 0;
+}
+
+#shop-container {
+    display: flex;
+    flex-direction: column;
+    background-color: gray;
+    border: black solid 2px;
+    border-radius: 20px;
+    width: fit-content;
+    height: fit-content;
+    gap: 10px;
+}
+
+#shop-title {
+    font-size: 50px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.shop-item {
+    width: 500px;
+    background-color: gray;
+    border: black 2px solid;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 15px;
+}
+
+.shop-item img {
+    width: 60px;
+    object-fit: cover;
+}
+
+.shop-item p {
+    font-size: 30px;
 }
