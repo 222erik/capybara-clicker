@@ -69,6 +69,7 @@ body {
 .shop-item {
     width: 400px;
     border: black 2px solid;
+    background: linear-gradient(135deg, #B9AED2, #ABA0C4);
     border-radius: 10px;
     display: flex;
     justify-content: flex-start;
@@ -101,4 +102,10 @@ body {
     margin-left: auto;
     margin-right: 10px;
     margin-bottom: -10px;
+}
+
+#click-power-indicator {
+    margin: 0;
+    margin-top: -10px;
+    font-size: 15px;
 }

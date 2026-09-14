@@ -1,6 +1,7 @@
 capybara = document.getElementById("capybara")
 clicks = document.getElementById("capy-clicks-indicator")
 cps = document.getElementById("cps-indicator")
+click_power = document.getElementById("click-power-indicator")
 
 var cps_counter = 0
 var units_per_click = 1
@@ -28,6 +29,7 @@ for (const item of shop_items) {
                 if (parseInt(clicks.innerText) >= 10) {
                     clicks.innerText = parseInt(clicks.innerText) - 10
                     units_per_click++;
+                    click_power.innerText = "+" + units_per_click + "/click"
                 } else {
                     // Cannot buy
                 }
