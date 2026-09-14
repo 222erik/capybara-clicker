@@ -35,16 +35,19 @@ body {
 
 #cps-indicator {
     font-size: 30px;
+    font-variant-numeric: tabular-nums;
     margin-top: 10px;
     margin-left: 10px;
     margin-bottom: 0;
+    min-width: 120px;
+    white-space: nowrap;
 }
 
 #shop-container {
     display: flex;
     flex-direction: column;
-    background-color: #AA99BB;
-    border: black solid 2px;
+    background: linear-gradient(135deg, #9A8FB8, #7C6F9E);
+    border: rgba(0, 0, 0, 0.6) solid 2px;
     border-radius: 20px;
     width: fit-content;
     height: fit-content;
@@ -52,6 +55,7 @@ body {
     padding: 15px 15px;
     margin-right: 10px;
     margin-top: 10px;
+    user-select: none;
 }
 
 #shop-title {
@@ -59,11 +63,11 @@ body {
     text-align: center;
     margin: 0;
     margin-top: 5px;
+    color: #000000;
 }
 
 .shop-item {
     width: 400px;
-    background-color: #AACCBB;
     border: black 2px solid;
     border-radius: 10px;
     display: flex;
@@ -73,16 +77,28 @@ body {
     gap: 15px;
 }
 
+.shop-item:hover {
+    cursor: pointer;
+    background: #A59FC6;
+}
+
 .shop-item img {
     width: 60px;
     object-fit: cover;
 }
 
-.shop-item p {
+.shop-item .shop-desc {
     font-size: 30px;
     margin: 0;
+    margin-bottom: -10px;
+    color: #000000;
 }
 
-.shop-item:hover {
-    cursor: pointer;
+.shop-item .shop-price {
+    font-size: 50px;
+    color: #000000;
+    margin: 0;
+    margin-left: auto;
+    margin-right: 10px;
+    margin-bottom: -10px;
 }
