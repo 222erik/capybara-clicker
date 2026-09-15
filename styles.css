@@ -76,11 +76,17 @@ body {
     align-items: center;
     padding: 4px 7px;
     gap: 15px;
+    transition: filter 0.1s ease-out, transform 0.1s ease-out;
 }
 
 .shop-item:hover {
     cursor: pointer;
     background: #A59FC6;
+}
+
+.shop-item.flash {
+    filter: brightness(2);
+    transform: scale(1.05);
 }
 
 .shop-item img {

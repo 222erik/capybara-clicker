@@ -30,6 +30,10 @@ for (const item of shop_items) {
                     clicks.innerText = parseInt(clicks.innerText) - 10
                     units_per_click++;
                     click_power.innerText = "+" + units_per_click + "/click"
+                    item.classList.add("flash")
+                    setTimeout(() => {
+                        item.classList.remove("flash");
+                    }, 100)
                 } else {
                     // Cannot buy
                 }
