@@ -73,3 +73,11 @@ function updateShop() {
     }
 }
 updateShop()
+
+document.getElementById("factory-reset").addEventListener("click", () => {
+    clicks = 0;
+    units_per_click = 1;
+    updateDOMItems()
+    updateShop()
+    updateLocalStorage()
+})
