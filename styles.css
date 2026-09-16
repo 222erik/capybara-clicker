@@ -27,6 +27,7 @@ body {
     width: 700px;
     margin-top: 14vh;
     transition: transform 0.1s ease-in-out;
+    user-select: none;
 }
 
 #capybara.shrink {
@@ -113,6 +114,12 @@ body {
 #click-power-indicator {
     margin: 0;
     margin-top: -10px;
+    font-size: 15px;
+}
+
+#autoclick-indicator {
+    margin: 0;
+    margin-top: 3px;
     font-size: 15px;
 }
 
