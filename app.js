@@ -100,11 +100,12 @@ for (const item of shop_items) {
     counter++
 }
 
+var unlocked_items = 2
 function updateShop() {
     let items = document.getElementsByClassName("shop-item")
     let ctr = 0
     for (const item of items) {
-        if (ctr == 2) {
+        if (ctr == unlocked_items) {
             break
         }
         if (parseInt(item.querySelector(".shop-price").innerText) <= clicks) {
@@ -115,6 +116,22 @@ function updateShop() {
         ctr++
     }
 
+    if (items.length > unlocked_items) {
+        let item = items[unlocked_items]
+        if (parseInt(item.querySelector(".shop-price").innerText) <= clicks) {
+            item.style.background = "linear-gradient(135deg, #B9AED2, #ABA0C4)";
+            unlocked_items++
+        }
+
+        switch (unlocked_items) {
+            case 3:
+                item.querySelector(".shop-cover").style.display = "none"
+                item.querySelector(".shop-cover-desc").style.display = "none"
+
+                item.querySelector(".shop-desc").style.display = "block"
+                item.querySelector(".shop-price").style.display = "block"
+        }
+    }
 }
 updateShop()
 
