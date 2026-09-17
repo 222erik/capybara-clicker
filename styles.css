@@ -134,3 +134,35 @@ body {
     font-size: 20px;
     margin-top: 20px;
 }
+
+.shop-cover {
+    font-size: 50px;
+}
+
+#shop-item-mrclicker .shop-desc {
+    display: none;
+}
+
+#shop-item-mrclicker .shop-price {
+    display: none;
+}
+
+#shop-item-mrclicker {
+    flex-direction: column;
+    align-items: center;
+}
+
+#shop-item-mrclicker,
+#shop-item-mrclicker:hover {
+    background: #555566;
+}
+
+.shop-cover {
+    margin: 0;
+    margin-bottom: -25px;
+}
+
+.shop-cover-desc {
+    margin: 0;
+    font-size: 20px;
+}

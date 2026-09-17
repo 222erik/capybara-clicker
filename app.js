@@ -102,13 +102,19 @@ for (const item of shop_items) {
 
 function updateShop() {
     let items = document.getElementsByClassName("shop-item")
+    let ctr = 0
     for (const item of items) {
+        if (ctr == 2) {
+            break
+        }
         if (parseInt(item.querySelector(".shop-price").innerText) <= clicks) {
             item.style.background = "linear-gradient(135deg, #B9AED2, #ABA0C4)";
         } else {
             item.style.background = "#999999";
         }
+        ctr++
     }
+
 }
 updateShop()
 
@@ -120,3 +126,5 @@ document.getElementById("factory-reset").addEventListener("click", () => {
     updateShop()
     updateLocalStorage()
 })
+
+
