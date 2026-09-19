@@ -95,6 +95,23 @@ for (const item of shop_items) {
                 }
             }
             break
+        case 2:
+            shop_function = () => {
+                if (clicks >= price) {
+                    clicks -= price
+                    units_per_click += 50
+                    item.classList.add("flash")
+                    setTimeout(() => {
+                        item.classList.remove("flash");
+                    }, 100)
+                    updateShop()
+                    updateLocalStorage()
+                    updateDOMItems()
+                } else {
+                    // Cannot buy
+                }
+            }
+            break
     }
     item.addEventListener("click", shop_function)
     counter++
@@ -138,7 +155,7 @@ function updateShop() {
 
                     let desc = item.querySelector(".shop-desc")
                     desc.style.display = "block"
-                    desc.style.fontSize = "30px"
+                    desc.style.fontSize = "33px"
 
                     let price = item.querySelector(".shop-price")
                     price.style.display = "block"
