@@ -132,12 +132,13 @@ function updateShop() {
                     cover.style.marginRight = "auto"
 
                     cover_container.style.flexDirection = "column"
+                    cover_container.style.alignItems = "flex-start"
 
                     item.querySelector(".shop-cover-desc").style.display = "none"
 
                     let desc = item.querySelector(".shop-desc")
                     desc.style.display = "block"
-                    desc.style.fontSize = "35px"
+                    desc.style.fontSize = "30px"
 
                     let price = item.querySelector(".shop-price")
                     price.style.display = "block"
