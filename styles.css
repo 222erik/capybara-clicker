@@ -37,7 +37,7 @@ body {
 #cps-indicator {
     font-size: 30px;
     font-variant-numeric: tabular-nums;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-left: 10px;
     margin-bottom: 0;
     min-width: 120px;
@@ -105,7 +105,7 @@ body {
 .shop-item .shop-price {
     font-size: 50px;
     color: #000000;
-    margin: 0;
+    margin-top: 0;
     margin-left: auto;
     margin-right: 10px;
     margin-bottom: -10px;
@@ -123,7 +123,7 @@ body {
     font-size: 15px;
 }
 
-#factory-reset {
+.debug {
     background-color: #FF5555;
     color: black;
     padding: 5px 10px;
@@ -132,7 +132,7 @@ body {
     border: 1px solid black;
     border-radius: 10px;
     font-size: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .shop-cover {
@@ -165,4 +165,12 @@ body {
 .shop-cover-desc {
     margin: 0;
     font-size: 20px;
+}
+
+.shop-cover-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }

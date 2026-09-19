@@ -8,9 +8,10 @@
 
 <body>
     <div id="big-container">
-        <div>
+        <div style="flex-direction: column; display: flex;">
             <p id="cps-indicator">0 cps</p>
-            <button type="button" id="factory-reset">reset everything (debug)</button>
+            <button type="button" class="debug" id="factory-reset">reset everything (debug)</button>
+            <button type="button" class="debug" id="1000clicks">+1000 clicks (debug)</button>
         </div>
         <div id="capy-column">
             <p id="capy-clicks-indicator">0</p>
@@ -31,8 +32,10 @@
                 <p class="shop-price">100</p>
             </div>
             <div class="shop-item" id="shop-item-mrclicker">
-                <p class="shop-cover">????</p>
-                <p class="shop-cover-desc">Unlocks at 2000</p>
+                <div class="shop-cover-container">
+                    <p class="shop-cover">????</p>
+                </div>
+                <p class="shop-cover-desc">Unlocks at 2000 clicks</p>
                 <p class="shop-desc">+5 Units per click</p>
                 <p class="shop-price">2000</p>
             </div>

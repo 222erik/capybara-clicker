@@ -121,15 +121,33 @@ function updateShop() {
         if (parseInt(item.querySelector(".shop-price").innerText) <= clicks) {
             item.style.background = "linear-gradient(135deg, #B9AED2, #ABA0C4)";
             unlocked_items++
-        }
 
-        switch (unlocked_items) {
-            case 3:
-                item.querySelector(".shop-cover").style.display = "none"
-                item.querySelector(".shop-cover-desc").style.display = "none"
+            switch (unlocked_items) {
+                case 3:
+                    let cover = item.querySelector(".shop-cover-container").querySelector(".shop-cover")
+                    let cover_container = item.querySelector(".shop-cover-container")
+                    cover.textContent = "Mr Clicker"
+                    cover_container.style.alignSelf = "flex-start"
 
-                item.querySelector(".shop-desc").style.display = "block"
-                item.querySelector(".shop-price").style.display = "block"
+                    item.querySelector(".shop-cover-desc").style.display = "none"
+
+                    let desc = item.querySelector(".shop-desc")
+                    desc.style.display = "block"
+                    desc.style.fontSize = "35px"
+
+                    let price = item.querySelector(".shop-price")
+                    price.style.display = "block"
+                    price.style.fontSize = "25px"
+                    price.style.marginRight = "auto"
+                    price.style.marginBottom = "-5px"
+                    price.style.marginTop = "-5px"
+
+                    const img = document.createElement("img")
+                    img.src = "images/hand.png"
+                    img.style.alignSelf = "flex-start"
+
+                    item.querySelector(".shop-cover-container").insertBefore(img, cover) // Doesn't work
+            }
         }
     }
 }
@@ -139,9 +157,16 @@ document.getElementById("factory-reset").addEventListener("click", () => {
     clicks = 0;
     units_per_click = 1;
     autoclick = 0;
+    unlocked_items = 2;
     updateDOMItems()
     updateShop()
     updateLocalStorage()
 })
 
+document.getElementById("1000clicks").addEventListener("click", () => {
+    clicks += 1000;
+    updateDOMItems()
+    updateShop()
+    updateLocalStorage()
+})
 
