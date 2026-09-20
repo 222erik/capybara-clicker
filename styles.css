@@ -48,8 +48,8 @@ body {
 #shop-container {
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, #9A8FB8, #7C6F9E);
-    border: rgba(0, 0, 0, 0.6) solid 2px;
+    background: linear-gradient(160deg, #8E7CC3, #6C5B9E);
+    border: rgba(28, 22, 48, 0.5) solid 2px;
     border-radius: 20px;
     width: fit-content;
     height: fit-content;
@@ -65,13 +65,13 @@ body {
     text-align: center;
     margin: 0;
     margin-top: 5px;
-    color: #000000;
+    color: #241F3D;
 }
 
 .shop-item {
     width: 400px;
-    border: black 2px solid;
-    background: linear-gradient(135deg, #B9AED2, #ABA0C4);
+    border: #3E3760 2px solid;
+    background: linear-gradient(135deg, #C9BFE6, #A79CCE);
     border-radius: 10px;
     display: flex;
     justify-content: flex-start;
@@ -83,7 +83,7 @@ body {
 
 .shop-item:hover {
     cursor: pointer;
-    background: #A59FC6;
+    background: #9C91C6;
 }
 
 .shop-item.flash {
@@ -100,12 +100,12 @@ body {
     font-size: 30px;
     margin: 0;
     margin-bottom: -10px;
-    color: #000000;
+    color: #221E3A;
 }
 
 .shop-item .shop-price {
     font-size: 50px;
-    color: #000000;
+    color: #221E3A;
     margin-top: 0;
     margin-left: auto;
     margin-right: 10px;
@@ -155,7 +155,7 @@ body {
 
 #shop-item-mrclicker,
 #shop-item-mrclicker:hover {
-    background: #555566;
+    background: #54506B;
 }
 
 .shop-cover {
@@ -176,4 +176,19 @@ body {
     gap: 15px;
     width: 100%;
     height: 100%;
+}
+
+.click-pop {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    pointer-events: none;
+    user-select: none;
+    z-index: 9999;
+    opacity: 1;
+    transition:
+        opacity 0.7s ease-out,
+        transform 0.7s ease-out;
 }

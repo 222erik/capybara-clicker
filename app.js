@@ -32,7 +32,7 @@ function updateDOMItems() {
 }
 updateDOMItems()
 
-capybara.addEventListener("click", () => {
+capybara.addEventListener("click", (event) => {
     cps_counter++;
     clicks += units_per_click;
     capybara.classList.add("shrink")
@@ -40,6 +40,19 @@ capybara.addEventListener("click", () => {
     updateShop()
     updateLocalStorage()
     updateDOMItems()
+
+    const pop = document.createElement("span")
+    pop.className = "click-pop"
+    pop.textContent = "+" + units_per_click
+    pop.style.left = event.clientX + "px"
+    pop.style.top = event.clientY + "px"
+    document.body.appendChild(pop)
+    void pop.offsetHeight
+    pop.style.opacity = "0"
+    pop.style.transform = "translate(-50%, -150%)"
+    const remove = () => pop.remove()
+    pop.addEventListener("transitionend", remove, { once: true })
+    setTimeout(remove, 800)
 })
 
 setInterval(() => {
@@ -126,9 +139,9 @@ function updateShop() {
             break
         }
         if (parseInt(item.querySelector(".shop-price").innerText) <= clicks) {
-            item.style.background = "linear-gradient(135deg, #B9AED2, #ABA0C4)";
+            item.style.background = "linear-gradient(135deg, #C9BFE6, #A79CCE)";
         } else {
-            item.style.background = "#999999";
+            item.style.background = "#8F8D99";
         }
         ctr++
     }
@@ -136,7 +149,7 @@ function updateShop() {
     if (items.length > unlocked_items) {
         let item = items[unlocked_items]
         if (parseInt(item.querySelector(".shop-price").innerText) <= clicks) {
-            item.style.background = "linear-gradient(135deg, #B9AED2, #ABA0C4)";
+            item.style.background = "linear-gradient(135deg, #C9BFE6, #A79CCE)";
             unlocked_items++
 
             switch (unlocked_items) {
