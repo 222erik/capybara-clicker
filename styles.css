@@ -140,11 +140,11 @@ body {
     font-size: 50px;
 }
 
-#shop-item-mrclicker .shop-desc {
+.locked .shop-desc {
     display: none;
 }
 
-#shop-item-mrclicker .shop-price {
+.locked .shop-price {
     display: none;
 }
 
@@ -153,8 +153,8 @@ body {
     align-items: center;
 }
 
-#shop-item-mrclicker,
-#shop-item-mrclicker:hover {
+.locked,
+.locked:hover {
     background: #54506B;
 }
 

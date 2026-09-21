@@ -153,7 +153,7 @@ function updateShop() {
             unlocked_items++
 
             switch (unlocked_items) {
-                case 3:
+                case 3: {
                     item.style.flexDirection = "row"
 
                     let cover = item.querySelector(".shop-cover-container").querySelector(".shop-cover")
@@ -183,6 +183,41 @@ function updateShop() {
                     img.style.alignSelf = "flex-start"
 
                     item.insertBefore(img, cover_container)
+                    break
+                }
+
+                case 4: {
+                    item.style.flexDirection = "row"
+
+                    let cover = item.querySelector(".shop-cover-container").querySelector(".shop-cover")
+                    let cover_container = item.querySelector(".shop-cover-container")
+                    cover.textContent = "Mr Clicker"
+                    cover.style.marginRight = "auto"
+
+                    cover_container.style.flexDirection = "column"
+                    cover_container.style.alignItems = "flex-start"
+
+                    item.querySelector(".shop-cover-desc").style.display = "none"
+
+                    let desc = item.querySelector(".shop-desc")
+                    desc.style.display = "block"
+                    desc.style.fontSize = "33px"
+
+                    let price = item.querySelector(".shop-price")
+                    price.style.display = "block"
+                    price.style.fontSize = "25px"
+                    price.style.marginRight = "auto"
+                    price.style.marginBottom = "-5px"
+                    price.style.marginTop = "-5px"
+
+                    const img = document.createElement("img")
+                    img.src = "images/mrclicker.png"
+                    img.style.width = "100px"
+                    img.style.alignSelf = "flex-start"
+
+                    item.insertBefore(img, cover_container)
+                    break
+                }
             }
         }
     }
