@@ -241,3 +241,10 @@ document.getElementById("1000clicks").addEventListener("click", () => {
     updateLocalStorage()
 })
 
+document.getElementById("20000clicks").addEventListener("click", () => {
+    clicks += 20000;
+    updateDOMItems()
+    updateShop()
+    updateLocalStorage()
+})
+
