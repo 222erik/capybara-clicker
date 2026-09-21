@@ -188,20 +188,23 @@ function updateShop() {
 
                 case 4: {
                     item.style.flexDirection = "row"
+                    item.style.gap = "0"
 
                     let cover = item.querySelector(".shop-cover-container").querySelector(".shop-cover")
                     let cover_container = item.querySelector(".shop-cover-container")
-                    cover.textContent = "Mr Clicker"
+                    cover.textContent = "New Skin"
                     cover.style.marginRight = "auto"
+                    cover.style.marginLeft = "auto"
 
                     cover_container.style.flexDirection = "column"
                     cover_container.style.alignItems = "flex-start"
+                    cover_container.style.gap = "25px"
 
                     item.querySelector(".shop-cover-desc").style.display = "none"
 
-                    let desc = item.querySelector(".shop-desc")
-                    desc.style.display = "block"
-                    desc.style.fontSize = "33px"
+                    // let desc = item.querySelector(".shop-desc")
+                    // desc.style.display = "none" // block
+                    // desc.style.fontSize = "33px"
 
                     let price = item.querySelector(".shop-price")
                     price.style.display = "block"
@@ -211,8 +214,8 @@ function updateShop() {
                     price.style.marginTop = "-5px"
 
                     const img = document.createElement("img")
-                    img.src = "images/mrclicker.png"
-                    img.style.width = "100px"
+                    img.src = "images/question.png"
+                    img.style.width = "50px"
                     img.style.alignSelf = "flex-start"
 
                     item.insertBefore(img, cover_container)
