@@ -125,6 +125,33 @@ for (const item of shop_items) {
                 }
             }
             break
+
+        case 3:
+            shop_function = () => {
+                if (clicks >= price && capybara.src.endsWith("images/capybara.png")) {
+                    clicks -= price
+                    capybara.src = "images/capy-cap.png"
+                    item.classList.add("flash")
+                    setTimeout(() => {
+                        item.classList.remove("flash");
+                    }, 100)
+
+                    item.querySelector(".shop-cover").style.marginBottom = "0"
+                    item.querySelector(".shop-cover-container").style.gap = "0"
+                    item.querySelector(".shop-price").style.display = "none"
+                    item.querySelector("img").src = "images/capy-cap.png"
+                    item.querySelector("img").style.margin = "0"
+                    item.querySelector("img").style.width = "140px"
+                    item.querySelector(".shop-cover").textContent = "Capy Cap"
+                    item.querySelector(".shop-desc").style.marginTop = "0px"
+                    item.querySelector(".shop-desc").textContent += " (already bought)"
+
+                    updateShop()
+                    updateLocalStorage()
+                    updateDOMItems()
+                }
+            }
+            break
     }
     item.addEventListener("click", shop_function)
     counter++
@@ -202,9 +229,12 @@ function updateShop() {
 
                     item.querySelector(".shop-cover-desc").style.display = "none"
 
-                    // let desc = item.querySelector(".shop-desc")
-                    // desc.style.display = "none" // block
-                    // desc.style.fontSize = "33px"
+                    let desc = item.querySelector(".shop-desc")
+                    desc.style.display = "block"
+                    desc.style.fontSize = "15px"
+                    desc.style.marginLeft = "auto"
+                    desc.style.marginRight = "auto"
+                    desc.style.marginTop = "-12px"
 
                     let price = item.querySelector(".shop-price")
                     price.style.display = "block"
