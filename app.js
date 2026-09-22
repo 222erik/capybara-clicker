@@ -145,6 +145,7 @@ for (const item of shop_items) {
                     item.querySelector(".shop-cover").textContent = "Capy Cap"
                     item.querySelector(".shop-desc").style.marginTop = "0px"
                     item.querySelector(".shop-desc").textContent += " (already bought)"
+                    document.getElementById("body").classList = "capycap"
 
                     updateShop()
                     updateLocalStorage()
@@ -166,7 +167,10 @@ function updateShop() {
             break
         }
         if (parseInt(item.querySelector(".shop-price").innerText) <= clicks) {
-            item.style.background = "linear-gradient(135deg, #C9BFE6, #A79CCE)";
+            let cover = item.querySelector(".shop-cover")
+            if (cover == null || (cover != null && cover.textContent != "Capy Cap")) {
+                item.style.background = "linear-gradient(135deg, #C9BFE6, #A79CCE)";
+            }
         } else {
             item.style.background = "#8F8D99";
         }

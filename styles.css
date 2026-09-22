@@ -1,7 +1,14 @@
-body {
+#body {
     font-family: sans-serif;
-    background: radial-gradient(circle, #FFDDDD, #77BBFF);
     user-select: none;
+}
+
+#body.normal {
+    background: radial-gradient(circle, #FFEEEE, #EEBBEE);
+}
+
+#body.capycap {
+    background: radial-gradient(circle, #FFDDDD, #77BBFF);
 }
 
 #big-container {
