@@ -17,6 +17,33 @@ function updateLocalStorage() {
     localStorage.setItem("autoclick", autoclick)
 }
 
+function spawnPop(text, anchorElement) {
+    const rect = anchorElement.getBoundingClientRect()
+    const pop = document.createElement("span")
+    pop.className = "capycap-skin-pop"
+    pop.textContent = text
+    pop.style.left = rect.right + 60 + "px"
+    pop.style.top = rect.top + rect.height / 2 + "px"
+    pop.style.fontSize = getComputedStyle(anchorElement).fontSize;
+    document.body.appendChild(pop)
+    void pop.offsetHeight
+    pop.style.opacity = "0"
+    pop.style.transform = "translate(-50%, -150%)"
+    const remove = () => pop.remove()
+    pop.addEventListener("transitionend", remove, { once: true })
+    setTimeout(remove, 800)
+}
+
+function doubleEverything() {
+    spawnPop("x2", document.getElementById("capy-clicks-indicator"))
+    spawnPop("x2", document.getElementById("click-power-indicator"))
+    spawnPop("x2", document.getElementById("autoclick-indicator"))
+
+    clicks *= 2;
+    units_per_click *= 2;
+    autoclick *= 2;
+}
+
 function updateDOMItems() {
     clicks_element.innerText = clicks;
     if (units_per_click == 1) {
@@ -146,6 +173,8 @@ for (const item of shop_items) {
                     item.querySelector(".shop-desc").style.marginTop = "0px"
                     item.querySelector(".shop-desc").textContent += " (already bought)"
                     document.getElementById("body").classList = "capycap"
+
+                    doubleEverything()
 
                     updateShop()
                     updateLocalStorage()

@@ -200,6 +200,22 @@
         transform 0.7s ease-out;
 }
 
+.capycap-skin-pop {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    font-weight: bold;
+    /*color: #fcc;*/
+    color: #000;
+    pointer-events: none;
+    user-select: none;
+    z-index: 9999;
+    opacity: 1;
+    transition:
+        opacity 0.7s ease-out,
+        transform 0.7s ease-out;
+}
+
 #shop-item-capycap img {
     margin: 12px;
     margin-right: 0;
