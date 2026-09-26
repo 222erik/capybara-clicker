@@ -4,17 +4,54 @@ cps_element = document.getElementById("cps-indicator")
 click_power_element = document.getElementById("click-power-indicator")
 autoclick_element = document.getElementById("autoclick-indicator")
 
+const SCALES = ["", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No", "Dc"]
+
 var cps_counter = 0
 var units_per_click = parseInt(localStorage.getItem("units_per_click")) || 1
 var clicks = parseInt(localStorage.getItem("clicks")) || 0
 var autoclick = parseInt(localStorage.getItem("autoclick")) || 0
+var unlocked_items = 2
 
-click_power_element.innerText = "+" + units_per_click + "/click"
+click_power_element.innerText = "+" + format(units_per_click) + "/click"
 
 function updateLocalStorage() {
     localStorage.setItem("units_per_click", units_per_click)
     localStorage.setItem("clicks", clicks)
     localStorage.setItem("autoclick", autoclick)
+}
+
+function applyCapycapStyles() {
+    console.log('hello!')
+    document.getElementById("body").classList = "capycap"
+    let item = document.getElementById("shop-item-capycap")
+    item.querySelector(".shop-cover").style.marginBottom = "0"
+    item.querySelector(".shop-cover-container").style.gap = "0"
+    item.querySelector(".shop-price").style.display = "none"
+    let img = item.querySelector("img")
+    if (img) {
+        console.log("hi!")
+        img.src = "images/capy-cap.png"
+        img.style.margin = "0"
+        img.style.width = "140px"
+    }
+    item.querySelector(".shop-cover").textContent = "Capy Cap"
+    item.querySelector(".shop-desc").style.marginTop = "0px"
+    item.querySelector(".shop-desc").textContent += " (already bought)"
+}
+
+function updateCapybara() {
+    if (localStorage.getItem("skin") == "capycap") {
+        capybara.src = "images/capy-cap.png"
+        applyCapycapStyles()
+    }
+}
+
+function format(n) {
+    if (n < 1000000) return String(Math.floor(n))
+    const tier = Math.min(Math.floor(Math.log10(n) / 3), SCALES.length - 1)
+    const scaled = n / Math.pow(10, tier * 3)
+    const digits = scaled >= 100 ? 0 : scaled >= 10 ? 1 : 2
+    return scaled.toFixed(digits) + SCALES[tier]
 }
 
 function spawnPop(text, anchorElement) {
@@ -45,16 +82,16 @@ function doubleEverything() {
 }
 
 function updateDOMItems() {
-    clicks_element.innerText = clicks;
+    clicks_element.innerText = format(clicks);
     if (units_per_click == 1) {
         click_power_element.innerText = ""
     } else {
-        click_power_element.innerText = "+" + units_per_click + "/click"
+        click_power_element.innerText = "+" + format(units_per_click) + "/click"
     }
     if (autoclick == 0) {
         autoclick_element.innerText = ""
     } else {
-        autoclick_element.innerText = "+" + autoclick + "/s autoclick"
+        autoclick_element.innerText = "+" + format(autoclick) + "/s autoclick"
     }
 }
 updateDOMItems()
@@ -70,7 +107,7 @@ capybara.addEventListener("click", (event) => {
 
     const pop = document.createElement("span")
     pop.className = "click-pop"
-    pop.textContent = "+" + units_per_click
+    pop.textContent = "+" + format(units_per_click)
     pop.style.left = event.clientX + "px"
     pop.style.top = event.clientY + "px"
     document.body.appendChild(pop)
@@ -83,9 +120,9 @@ capybara.addEventListener("click", (event) => {
 })
 
 setInterval(() => {
-    cps_element.innerText = cps_counter + " cps"
+    cps_element.innerText = format(cps_counter) + " cps"
     if (autoclick != 0) {
-        cps_element.innerText += " (autoclick +" + autoclick + "/s)"
+        cps_element.innerText += " (autoclick +" + format(autoclick) + "/s)"
     }
     cps_counter = 0
 
@@ -163,16 +200,8 @@ for (const item of shop_items) {
                         item.classList.remove("flash");
                     }, 100)
 
-                    item.querySelector(".shop-cover").style.marginBottom = "0"
-                    item.querySelector(".shop-cover-container").style.gap = "0"
-                    item.querySelector(".shop-price").style.display = "none"
-                    item.querySelector("img").src = "images/capy-cap.png"
-                    item.querySelector("img").style.margin = "0"
-                    item.querySelector("img").style.width = "140px"
-                    item.querySelector(".shop-cover").textContent = "Capy Cap"
-                    item.querySelector(".shop-desc").style.marginTop = "0px"
-                    item.querySelector(".shop-desc").textContent += " (already bought)"
-                    document.getElementById("body").classList = "capycap"
+                    localStorage.setItem("skin", "capycap")
+                    applyCapycapStyles()
 
                     doubleEverything()
 
@@ -205,7 +234,6 @@ for (const item of shop_items) {
     counter++
 }
 
-var unlocked_items = 2
 function updateShop() {
     let items = document.getElementsByClassName("shop-item")
     let ctr = 0
@@ -347,14 +375,18 @@ function updateShop() {
 }
 updateShop()
 
+setTimeout(() => updateCapybara(), 1000)
+
 document.getElementById("factory-reset").addEventListener("click", () => {
     clicks = 0;
     units_per_click = 1;
     autoclick = 0;
     unlocked_items = 2;
+    localStorage.setItem("skin", null)
     updateDOMItems()
     updateShop()
     updateLocalStorage()
+    updateCapybara()
 })
 
 document.getElementById("1000clicks").addEventListener("click", () => {
