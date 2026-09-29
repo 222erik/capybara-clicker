@@ -37,10 +37,31 @@ function applyCapycapStyles() {
     item.querySelector(".shop-desc").textContent += " (already bought)"
 }
 
+function applyPurpleStyles() {
+    document.getElementById("body").classList = "purple"
+    let item = document.getElementById("shop-item-purple")
+    item.querySelector(".shop-cover").style.marginBottom = "0"
+    item.querySelector(".shop-cover-container").style.gap = "0"
+    item.querySelector(".shop-price").style.display = "none"
+    let img = item.querySelector("img")
+    if (img) {
+        img.src = "images/purple.png"
+        img.style.margin = "0"
+        img.style.width = "140px"
+    }
+    item.querySelector(".shop-cover").textContent = "Purple Skin"
+    item.querySelector(".shop-desc").style.marginTop = "0px"
+    item.querySelector(".shop-desc").textContent += " (already bought)"
+}
+
 function updateCapybara() {
-    if (localStorage.getItem("skin") == "capycap") {
+    let skin = localStorage.getItem("skin");
+    if (skin == "capycap") {
         capybara.src = "images/capy-cap.png"
         applyCapycapStyles()
+    } else if (skin == "purple") {
+        capybara.src = "images/purple.png"
+        applyPurpleStyles()
     }
 }
 
@@ -245,6 +266,28 @@ for (const item of shop_items) {
                 }
             }
             break
+
+        case 6:
+            shop_function = () => {
+                if (clicks >= price && capybara.src.endsWith("images/capy-cap.png")) {
+                    clicks -= price
+                    capybara.src = "images/purple.png"
+                    item.classList.add("flash")
+                    setTimeout(() => {
+                        item.classList.remove("flash");
+                    }, 100)
+
+                    localStorage.setItem("skin", "purple")
+                    applyPurpleStyles()
+
+                    doubleEverything()
+
+                    updateShop()
+                    updateLocalStorage()
+                    updateDOMItems()
+                }
+            }
+            break
     }
     item.addEventListener("click", shop_function)
     counter++
@@ -258,8 +301,7 @@ function updateShop() {
             break
         }
         if (parseInt(item.querySelector(".shop-price").innerText) <= clicks) {
-            let cover = item.querySelector(".shop-cover")
-            if (cover == null || (cover != null && cover.textContent != "Capy Cap")) {
+            if (!(ctr == 3 || ctr == 6)) {
                 item.style.background = "linear-gradient(135deg, #C9BFE6, #A79CCE)";
             }
         } else {
@@ -421,6 +463,45 @@ function updateShop() {
                     const img = document.createElement("img")
                     img.src = "images/president.png"
                     img.style.width = "100px"
+                    img.style.alignSelf = "flex-start"
+
+                    item.insertBefore(img, cover_container)
+                    break
+                }
+
+                case 7: {
+                    item.style.flexDirection = "row"
+                    item.style.gap = "0"
+
+                    let cover = item.querySelector(".shop-cover-container").querySelector(".shop-cover")
+                    let cover_container = item.querySelector(".shop-cover-container")
+                    cover.textContent = "New Skin"
+                    cover.style.marginRight = "auto"
+                    cover.style.marginLeft = "auto"
+
+                    cover_container.style.flexDirection = "column"
+                    cover_container.style.alignItems = "flex-start"
+                    cover_container.style.gap = "25px"
+
+                    item.querySelector(".shop-cover-desc").style.display = "none"
+
+                    let desc = item.querySelector(".shop-desc")
+                    desc.style.display = "block"
+                    desc.style.fontSize = "15px"
+                    desc.style.marginLeft = "auto"
+                    desc.style.marginRight = "auto"
+                    desc.style.marginTop = "-12px"
+
+                    let price = item.querySelector(".shop-price")
+                    price.style.display = "block"
+                    price.style.fontSize = "25px"
+                    price.style.marginRight = "auto"
+                    price.style.marginBottom = "-5px"
+                    price.style.marginTop = "-5px"
+
+                    const img = document.createElement("img")
+                    img.src = "images/question.png"
+                    img.style.width = "50px"
                     img.style.alignSelf = "flex-start"
 
                     item.insertBefore(img, cover_container)
