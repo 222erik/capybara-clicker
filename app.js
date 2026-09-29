@@ -4,7 +4,7 @@ cps_element = document.getElementById("cps-indicator")
 click_power_element = document.getElementById("click-power-indicator")
 autoclick_element = document.getElementById("autoclick-indicator")
 
-const SCALES = ["", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No", "Dc"]
+const SCALES = ["", "", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No", "Dc"]
 
 var cps_counter = 0
 var units_per_click = parseInt(localStorage.getItem("units_per_click")) || 1
@@ -21,7 +21,6 @@ function updateLocalStorage() {
 }
 
 function applyCapycapStyles() {
-    console.log('hello!')
     document.getElementById("body").classList = "capycap"
     let item = document.getElementById("shop-item-capycap")
     item.querySelector(".shop-cover").style.marginBottom = "0"
@@ -29,7 +28,6 @@ function applyCapycapStyles() {
     item.querySelector(".shop-price").style.display = "none"
     let img = item.querySelector("img")
     if (img) {
-        console.log("hi!")
         img.src = "images/capy-cap.png"
         img.style.margin = "0"
         img.style.width = "140px"
@@ -221,7 +219,25 @@ for (const item of shop_items) {
                         item.classList.remove("flash");
                     }, 100)
 
-                    autoclick += 300000
+                    autoclick += 50000
+
+                    updateShop()
+                    updateLocalStorage()
+                    updateDOMItems()
+                }
+            }
+            break
+
+        case 5:
+            shop_function = () => {
+                if (clicks >= price) {
+                    clicks -= price
+                    item.classList.add("flash")
+                    setTimeout(() => {
+                        item.classList.remove("flash");
+                    }, 100)
+
+                    units_per_click += 1000000
 
                     updateShop()
                     updateLocalStorage()
@@ -369,6 +385,47 @@ function updateShop() {
                     break
                 }
 
+                case 6: {
+                    item.style.flexDirection = "row"
+                    item.style.gap = "0"
+
+                    let cover = item.querySelector(".shop-cover-container").querySelector(".shop-cover")
+                    let cover_container = item.querySelector(".shop-cover-container")
+                    cover.textContent = "President Clicker"
+                    cover.style.marginRight = "auto"
+                    cover.style.marginLeft = "auto"
+                    cover.style.marginBottom = "0"
+                    cover.style.fontSize = "38px"
+
+                    cover_container.style.flexDirection = "column"
+                    cover_container.style.alignItems = "flex-start"
+                    cover_container.style.gap = "0px"
+
+                    item.querySelector(".shop-cover-desc").style.display = "none"
+
+                    let desc = item.querySelector(".shop-desc")
+                    desc.style.display = "block"
+                    desc.style.fontSize = "24px"
+                    desc.style.marginLeft = "auto"
+                    desc.style.marginRight = "auto"
+                    desc.style.marginTop = "-7px"
+                    desc.style.marginBottom = "0px"
+
+                    let price = item.querySelector(".shop-price")
+                    price.style.display = "block"
+                    price.style.fontSize = "25px"
+                    price.style.marginRight = "auto"
+                    price.style.marginTop = "0px"
+                    price.style.marginBottom = "0px"
+
+                    const img = document.createElement("img")
+                    img.src = "images/president.png"
+                    img.style.width = "100px"
+                    img.style.alignSelf = "flex-start"
+
+                    item.insertBefore(img, cover_container)
+                    break
+                }
             }
         }
     }
