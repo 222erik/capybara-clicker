@@ -145,11 +145,19 @@ setInterval(() => {
     }
     cps_counter = 0
 
-    clicks += autoclick
     updateShop()
     updateDOMItems()
     updateLocalStorage()
 }, 1000)
+
+var autoclick_remainder = 0
+setInterval(() => {
+    autoclick_remainder += autoclick
+    let whole = Math.floor(autoclick_remainder / 50)
+    autoclick_remainder -= whole * 50
+    clicks += whole
+    updateDOMItems()
+}, 50)
 
 shop_items = document.getElementsByClassName("shop-item");
 var counter = 0
