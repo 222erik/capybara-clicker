@@ -547,3 +547,17 @@ document.getElementById("200000clicks").addEventListener("click", () => {
     updateShop()
     updateLocalStorage()
 })
+
+document.getElementById("5000000clicks").addEventListener("click", () => {
+    clicks += 5000000;
+    updateDOMItems()
+    updateShop()
+    updateLocalStorage()
+})
+
+document.getElementById("1000000000clicks").addEventListener("click", () => {
+    clicks += 1000000000;
+    updateDOMItems()
+    updateShop()
+    updateLocalStorage()
+})
