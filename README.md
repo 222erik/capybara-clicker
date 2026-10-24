@@ -9,6 +9,7 @@ https://222erik.github.io/capybara-clicker/
 ## Features
 - Skins
 - Animations/effects
+- A spinning sun
 - CPS counter
 - Cheat buttons
 - A shop
