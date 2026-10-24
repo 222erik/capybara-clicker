@@ -150,11 +150,13 @@ setInterval(() => {
     updateLocalStorage()
 }, 1000)
 
-var autoclick_remainder = 0
+var autoclick_remainder = 0.0
 setInterval(() => {
-    autoclick_remainder += autoclick
-    let whole = Math.floor(autoclick_remainder / 50)
-    autoclick_remainder -= whole * 50
+    if (autoclick == 0) {
+        return
+    }
+    let whole = Math.floor(autoclick / 20 + autoclick_remainder)
+    autoclick_remainder += (autoclick / 20) - whole
     clicks += whole
     updateDOMItems()
 }, 50)
