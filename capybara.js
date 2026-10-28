@@ -43,7 +43,7 @@ function updateCapybara() {
     }
 }
 
-capybara.addEventListener("click", (event) => {
+let capyClick = () => {
     cps_counter++;
     clicks += units_per_click;
     capybara.classList.add("shrink")
@@ -66,4 +66,13 @@ capybara.addEventListener("click", (event) => {
     let remove = () => pop.remove()
     pop.addEventListener("transitionend", remove, { once: true })
     setTimeout(remove, 800)
-})
+}
+
+document.addEventListener("keydown", function(event) {
+    if (event.code === "Space" && !event.repeat) {
+        event.preventDefault();
+        capyClick()
+    }
+});
+
+capybara.addEventListener("click", capyClick)
