@@ -60,7 +60,7 @@ let capyClick = () => {
     pop.style.left = event.clientX + "px"
     pop.style.top = event.clientY + "px"
     document.body.appendChild(pop)
-    void pop.offsetHeight // Process change in layout
+    void pop.offsetHeight // change in layout
     pop.style.opacity = "0"
     pop.style.transform = "translate(-50%, -150%)"
     let remove = () => pop.remove()
