@@ -53,7 +53,6 @@ let capyClick = () => {
     updateShop()
     updateLocalStorage()
     updateDOMItems()
-
     const pop = document.createElement("span")
     pop.className = "click-pop"
     pop.textContent = "+" + format(units_per_click)
@@ -66,6 +65,11 @@ let capyClick = () => {
     let remove = () => pop.remove()
     pop.addEventListener("transitionend", remove, { once: true })
     setTimeout(remove, 800)
+
+    if (clicks == 1) {
+        document.getElementById("help-text").classList = "disappear"
+        setTimeout(() => { document.getElementById("help-text").style.display = "none" }, 500)
+    }
 }
 
 document.addEventListener("keydown", function(event) {

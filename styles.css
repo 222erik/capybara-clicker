@@ -210,7 +210,6 @@
     transform: translate(-50%, -50%);
     font-size: 50px;
     font-weight: bold;
-    /*color: #fcc;*/
     color: #000;
     pointer-events: none;
     user-select: none;
@@ -224,22 +223,6 @@
 #shop-item-capycap img {
     margin: 12px;
     margin-right: 0;
-}
-
-.purple-skin-pop {
-    position: fixed;
-    transform: translate(-50%, -50%);
-    font-size: 50px;
-    font-weight: bold;
-    /*color: #fcc;*/
-    color: #000;
-    pointer-events: none;
-    user-select: none;
-    z-index: 9999;
-    opacity: 1;
-    transition:
-        opacity 0.7s ease-out,
-        transform 0.7s ease-out;
 }
 
 #shop-item-purple img {
@@ -293,4 +276,16 @@
     100% {
         transform: rotate(360deg) scale(1);
     }
+}
+
+#help-text {
+    font-size: 20px;
+    position: absolute;
+    top: 140px;
+    text-align: center;
+    transition: opacity 0.5s ease-out;
+}
+
+#help-text.disappear {
+    opacity: 0;
 }

@@ -113,15 +113,8 @@ document.getElementById("1000clicks").addEventListener("click", () => {
     updateLocalStorage()
 })
 
-document.getElementById("20000clicks").addEventListener("click", () => {
-    clicks += 20000;
-    updateDOMItems()
-    updateShop()
-    updateLocalStorage()
-})
-
-document.getElementById("200000clicks").addEventListener("click", () => {
-    clicks += 200000;
+document.getElementById("50000clicks").addEventListener("click", () => {
+    clicks += 50000;
     updateDOMItems()
     updateShop()
     updateLocalStorage()
