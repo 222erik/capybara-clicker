@@ -119,7 +119,9 @@ capybara.addEventListener("click", (event) => {
     cps_counter++;
     clicks += units_per_click;
     capybara.classList.add("shrink")
-    setTimeout(() => capybara.classList.remove("shrink"), 100)
+    setTimeout(() => {
+        capybara.classList.remove("shrink")
+    }, 100)
     updateShop()
     updateLocalStorage()
     updateDOMItems()
@@ -237,6 +239,7 @@ for (const item of shop_items) {
                     updateShop()
                     updateLocalStorage()
                     updateDOMItems()
+                    positionSun()
                 }
             }
             break
@@ -295,6 +298,7 @@ for (const item of shop_items) {
                     updateShop()
                     updateLocalStorage()
                     updateDOMItems()
+                    positionSun()
                 }
             }
             break
@@ -571,3 +575,16 @@ document.getElementById("1000000000clicks").addEventListener("click", () => {
     updateShop()
     updateLocalStorage()
 })
+
+let sun = document.getElementById("sun")
+
+function positionSun() {
+    let capyRect = capybara.getBoundingClientRect()
+    let sunRect = sun.getBoundingClientRect()
+    sun.style.left = (capyRect.left + capyRect.width / 2 - sunRect.width / 2) + "px"
+    sun.style.top = (capyRect.top + capyRect.height / 2 - sunRect.height / 2) + "px"
+    console.log("hello!")
+}
+
+window.addEventListener("load", positionSun)
+
